@@ -91,7 +91,6 @@
           :select-mode="selectMode"
           responsive="sm"
           ref="selectableTable"
-          selectable
           id="table-transition-example"
           @row-selected="onRowSelected"
         >
@@ -100,11 +99,11 @@
           <template #cell(actions) ="row" >
 
 
-            <b-col>
+            <!-- <b-col> -->
               <b-button-group>
-                <b-button @click="getDetaildReport(row.item.id, row.item.execute_at_date)" variant="success" size="sm" class="btn-denim small"> <font-awesome-icon icon="download" class="text-denim-800  group-hover:text-denim-300" /> &nbsp;Detailed Report </b-button>
+                <b-button @click="getDetaildReport(row.item.id, row.item.execute_at_date)" variant="success" size="sm" class="btn-denim1 small btn-block"> <font-awesome-icon icon="download" class="text-white-800  group-hover:text-denim-300" /> &nbsp;Detailed Report </b-button>
               </b-button-group>
-            </b-col>
+            <!-- </b-col> -->
           </template>
 
 
@@ -153,7 +152,7 @@
           modes: ['multi', 'single', 'range'],
           items: [],
           fields: [
-            { key: 'execute_at_date', label: 'Execute At', sortable: false, sortDirection: 'desc' },
+            { key: 'execute_at_date', label: 'Execute At', sortable: true, sortDirection: 'desc' },
             { key: 'execute_at_time', label: 'Execute At Time', sortable: false, sortDirection: 'desc' },
             { key: 'mail_clicked', label: 'Mail Clicked'},
             { key: 'mail_opened', label: 'Mail Opened'},

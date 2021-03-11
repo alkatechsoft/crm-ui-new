@@ -72,7 +72,7 @@
   </b-row>
 
   <!-- Main table element -->
-
+ 
   <b-table
     :items="items"
     :fields="fields"
@@ -110,7 +110,7 @@
       <b-button-group>
         <b-button  variant="warning" size="sm" >
           <font-awesome-icon v-if="edit === row.item.id" @click="onSave(row.item)" icon="check" class="text-denim-800  group-hover:text-denim-300" />
-          <font-awesome-icon v-if="edit !== row.item.id"  @click="onEdit(row.item)" icon="pencil-ruler" class="text-denim-800  group-hover:text-denim-300" />
+          <font-awesome-icon v-if="edit !== row.item.id"  @click="onEdit(row.item)" icon="edit" class="text-denim-800  group-hover:text-white-300" />
         </b-button>
         <b-button  variant="danger" size="sm"  @click="onDelete(row.item)" >
           <font-awesome-icon  @click="onDelete(row.item)"  icon="trash" class="text-denim-800  group-hover:text-denim-300" />
@@ -135,7 +135,7 @@
       ></b-pagination>
 
     </b-col>
-    <!-- {{ selectedItem }} -->
+    {{ selectedItem }}
   </b-row>
 
 </div>
@@ -163,10 +163,10 @@
           modes: ['multi', 'single', 'range'],
           items: [],
           fields: [
-            { key: 'username', label: 'Name', sortable: false, sortDirection: 'desc' },
-            { key: 'email', label: 'Email', sortable: false, sortDirection: 'desc' },
-            { key: 'contact', label: 'Contact', sortable: false, sortDirection: 'desc' },
-            { key: 'status', label: 'Status', sortable: false, sortDirection: 'desc' },
+            { key: 'username', label: 'Name', sortable: true, sortDirection: 'desc' },
+            { key: 'email', label: 'Email', sortable: true, sortDirection: 'desc' },
+            { key: 'contact', label: 'Contact', sortable: true, sortDirection: 'desc' },
+            { key: 'status', label: 'Status', sortable: true, sortDirection: 'desc' },
             { key: 'actions', label: 'Actions' }
           ],
           selectMode: 'multi',
@@ -257,8 +257,14 @@
           this.edit = this.edit !== item.id ? item.id : null;
         },
         onSave(item){
-
-          // on click save row
+           // on click save row
+           if(item.username === ''){
+            this.$toast.error('Name Field required')
+           }
+          if(item.email === ''){
+            this.$toast.error('Email Field required')
+           } 
+           if(!(item.username === '' || item.email === '')){
           var data= {};
           this.fields.map(function(value) {
             data[value.key]=item[value.key];
@@ -267,6 +273,7 @@
           this.updateClientData(data)
           this.fetchClientData(this.subscriberType);
           this.edit = this.edit !== item.id ? item.id : null;
+           }
         },
         onDelete(item){
           // on click delete row

@@ -86,7 +86,6 @@
             small
             @filtered="onFiltered"
             :select-mode="selectMode"
-            selectable
             responsive="sm"
             ref="selectableTable"
             @row-selected="onRowSelected"

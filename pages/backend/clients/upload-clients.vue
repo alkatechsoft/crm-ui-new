@@ -47,6 +47,7 @@
                 <b-col>
                   <b-form-group>
                     <v-select class="style-chooser"
+                             :select-on-key-codes="[188, 13, 9]"
                               v-model="selectCategory"
                               placeholder="seclect"
                               size="lg"
@@ -77,7 +78,7 @@
                   show
                   class="elementToFadeInAndOut mt-2"
                   variant="success"
-                  v-if="isUploaded"
+                  v-if="false"
                 >
                            <span variant="success" class="text-float"
                            > <i class="fa fa-smile"/> Uploaded Succesfully
@@ -319,6 +320,8 @@
                 )
                 .then((response) => {
                   if (response.data.response_code === 200) {
+                this.$toast.success('Subscriber Uploaded Successfully')
+
                     this.fileName = false
                     this.processing = false;
                     this.isUploaded = true
@@ -362,6 +365,13 @@
 
       },
       onUpload() {
+        if(this.selectCategory.length === 0){
+                this.$toast.error('* Select Category Field Rrequired')
+                return
+        } else if( this.selectedFile === null){
+          this.$toast.error('Choose File Field Rrequired')
+          return
+        }
         const fileData1 = new FormData();
         fileData1.append(
           "upload_excel",

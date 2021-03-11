@@ -12,14 +12,20 @@
           >
             Full Name <span class="text-red-800 text-lg">*</span>
           </label>
+      <ValidationProvider name="Name" :rules="{ required: true }" v-slot="{ errors }">
+
           <input
             type="text"
             class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
             placeholder="xyz"
             v-model="username"
           />
+        <span>{{ errors[0] }}</span>
+
+    </ValidationProvider>
+
         </div>
-      </div>
+        </div>
       <div class="w-full lg:w-6/12 px-4">
         <div class="relative w-full mb-3">
           <label
@@ -28,12 +34,16 @@
           >
             Email address <span class="text-red-800 text-lg">*</span>
           </label>
+      <ValidationProvider name="Email" :rules="{ required: true, email: true }" v-slot="{ errors }">
           <input
             type="email"
             class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
             placeholder="xyz@example.com"
             v-model="email"
           />
+        <span>{{ errors[0] }}</span>
+
+      </ValidationProvider>
         </div>
       </div>
       <div class="w-full lg:w-6/12 px-4">
@@ -60,10 +70,10 @@
           >
             Category  <span class="text-red-800 text-lg">*</span>
           </label>
-          <v-select class="style-chooser"
+          <v-select 
+                    class="style-chooser px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                     v-model="categories"
                     placeholder="select category"
-                    size="lg"
                     :options="category"
                     :filterable="true"
                     :multiple="true"
@@ -110,6 +120,7 @@
             contact:null,
             email:null,
             username: null,
+            value: ''
           }
       },
 
@@ -141,7 +152,7 @@
         async submitSubscriber() {
           try {
 
-            if (this.categories>0  && this.email  && this.username){
+            if (this.categories.length>0  && this.email  && this.username){
               var category_name = [];
               for (var i = 0; i < this.categories.length; i++) {
                 category_name[i] = this.categories[i].label

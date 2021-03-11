@@ -56,10 +56,16 @@
         async onUserLogin() {
           try {
             let response = await this.$auth.loginWith('local', { data: {'email':this.email, 'password':this.password} })
-            if(response.data.response_body !==''){
-              this.$toast.success('Welcome  ' + this.$auth.user.username)
+
+            if (response.data.response_body !== '' && response.data.response_code == 200) {
+              this.$toast.success(response.data.response_message)
+              this.toggler = true;
               this.$router.push('/backend/dashboard');
+            } else {
+              this.$toast.error(response.data.response_message)
             }
+
+
           } catch (err) {
             console.log(err)
             this.$toast.error(err)

@@ -99,7 +99,9 @@
           <template #cell(actions)="row" >
             <b-col  >
               <b-button-group>
-                <nuxt-link :to="{ path: '/backend/scheduler/mail-scheduler-detailed-report', query: { id: row.item.scheduler_id, title: row.item.title }}"><b-button>view</b-button></nuxt-link>
+                <nuxt-link :to="{ path: '/backend/scheduler/mail-scheduler-detailed-report', query: { id: row.item.scheduler_id, title: row.item.title }}">
+                <b-button variant="primary">view</b-button>
+                </nuxt-link>
               </b-button-group>
             </b-col>
           </template>
@@ -214,6 +216,7 @@
               return { text: f.label, value: f.key }
             })
         }
+      
       },
       mounted() {
         this.$nuxt.$emit('changeTitle', "schedule mailed report")

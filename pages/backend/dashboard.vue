@@ -19,9 +19,26 @@
         </div>
       </div>
     </section>
+    <b-alert
+                        :show="dismissCountDown"
+                        dismissible
+                        variant="success"
+                        @dismissed="dismissCountDown=0"
+                        @dismiss-count-down="countDownChanged"
+                        class="elementToFadeInAndOut alert-custom-position mt-2"
+                        v-if="isMaild"
+                      >
+                        <p variant="success" class="text-float"
+                        > <i class="fa fa-smile" /> Added To Queue successfully
+                        </p>
+                        <b-progress
+                          variant="warning"
+                          :max="dismissSecs"
+                          :value="dismissCountDown"
+                          height="4px"
+                        ></b-progress>
+                      </b-alert>
   </div>
-
-
 </template>
 
 

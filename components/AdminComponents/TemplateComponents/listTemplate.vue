@@ -133,10 +133,10 @@
     <template #cell(actions)="row">
       <b-button-group>
         <b-button  variant="warning" size="sm" @click="onEdit(row.item)">
-          <font-awesome-icon  icon="pencil-ruler" class="text-denim-800  group-hover:text-denim-300" />
+          <font-awesome-icon  icon="edit" class="text-white-800  group-hover:text-denim-300" />
         </b-button>
         <b-button  variant="danger" size="sm"  @click="onDelete(row.item)" >
-          <font-awesome-icon  icon="trash" class="text-denim-800  group-hover:text-denim-300" />
+          <font-awesome-icon  icon="trash" class="text-white-800  group-hover:text-denim-300" />
         </b-button>
       </b-button-group>
     </template>
