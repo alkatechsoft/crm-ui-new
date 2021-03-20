@@ -3,11 +3,12 @@
   <div class="container-fluid bg-white dark:bg-gray-800">
     <sidebar/>
 
-    <div class="relative md:ml-64 bg-white dark:bg-gray-800">
+    <div class=" relative md:ml-64 bg-white dark:bg-gray-800">
       <AdminNavbar :page-title="pageTitle"/>
       <header-stats v-if="isDashboard"/>
       <div class="">
         <Nuxt v-on:changeTitle="updatePageTitle($event)"/>
+        <!-- <Nuxt @change="updatePageTitle($event)"/> -->
       </div>
       <div class="px-4 md:px-10 mx-auto w-full-m-24">
         <footer-admin/>

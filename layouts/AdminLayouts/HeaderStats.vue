@@ -1,6 +1,6 @@
 <template>
   <!-- Header -->
-  <div class="relative bg-green-400 md:pt-32 pb-16 pt-12 text-black dark:bg-gray-800 dark:text-white">
+  <div class="relative bg-bg md:pt-32 pb-3 pt-12 text-black dark:bg-gray-800 dark:text-white">
     <div class="px-4 md:px-10 mx-auto w-full">
       <div>
         <!-- Card stats -->
@@ -117,3 +117,4 @@ export default {
 
 };
 </script>
+ 

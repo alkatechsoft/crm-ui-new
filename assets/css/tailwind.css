@@ -18,3 +18,9 @@
 .vs__selected-options {
   height: 1rem !important;
 }
+.bg-bg{
+  background: aliceblue;
+}
+.admin-nav{
+  background: #4c4c92;
+}
