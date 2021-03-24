@@ -22,7 +22,8 @@ export default {
     },
     watch: {
       getSelected:function(){
-      console.log('comunication............', this.getSelected)
+            console.log('bar chart comunication from parent to child established', this.getSelected)
+
       this.resetChart();
       this.trackCampaign(this.getSelected)
      }
@@ -84,20 +85,21 @@ export default {
       this.chartData.count = 0
     },
     mailCount(id){
-      this.$axios.post('mtk-report-list-all-tracker-based-helper',{ helper_id: id }).then((response2)=>{ 
-              if(response2.data.response_code === 200){
-              this.chartData.count++
-              console.log('response2 is count', response2.data.response_body.length, this.chartData.count, this.chartData.helper_id.length)
-              this.chartData.data1.push(response2.data.response_body.length);
-              if (this.chartData.count === this.chartData.helper_id.length){
                 this.chartRender();
                 this.sendMessageToParent(this.chartData.helper_id.length);
-              }
-              }
-              }).catch(function (error){
-            console.log( error);
-          });
-      
+      // this.$axios.post('mtk-report-list-all-tracker-based-helper',{ helper_id: id }).then((response2)=>{
+      //         if(response2.data.response_code === 200){
+      //         this.chartData.count++
+      //         console.log('response2 is count', response2.data.response_body.length, this.chartData.count, this.chartData.helper_id.length)
+      //         this.chartData.data1.push(response2.data.response_body.length);
+      //         if (this.chartData.count === this.chartData.helper_id.length){
+      //           this.chartRender();
+      //           this.sendMessageToParent(this.chartData.helper_id.length);
+      //         }
+      //         }
+      //         }).catch(function (error){
+      //          console.log( error);
+      //     });
     },
     chartRender(){
       console.log('chart render start')
@@ -119,20 +121,17 @@ export default {
           ] 
           }, {responsive: true, maintainAspectRatio: true})
     },
-    
+
     setDataToChart(selected){
     this.$axios.post('mtk-report-list-all-helper-based-scheduler',{ scheduler_id: selected }).then((response1)=>{
     this.resetChart();
           console.log('response body length', response1.data.response_body.length)
          if(response1.data.response_code === 200 && response1.data.response_body.length > 0){
-              response1.data.response_body.map((data) => this.chartData.helper_id.push(data.id));
-               this.chartData.helper_id.map((id) =>  {
-                this.mailCount(id)
-                console.log('before map function')
-
-             })
+              response1.data.response_body.map((data) => this.chartData.data1.push(data.total_send_mails));
+              this.sendMessageToParent(this.chartData.helper_id.length);
               response1.data.response_body.map((data) => this.chartData.labes.push(data.execute_at_date));
               response1.data.response_body.map((result) => this.chartData.data2.push(result.mail_opened));
+              this.chartRender();
               console.log('after map function', this.chartData)
 
           } else {
@@ -144,12 +143,10 @@ export default {
             console.log( error);
           });
     },
-  trackCampaign(selected){
+   trackCampaign(selected){
    this.chartRender()
           this.setDataToChart(selected)
   },
-
- 
   },
   
 }

@@ -52,6 +52,7 @@
       },
 
       methods:{
+                asyncData({ app, $hello }){ $hello('asyncData')},
 
         async onUserLogin() {
           try {
@@ -60,6 +61,8 @@
             if (response.data.response_body !== '' && response.data.response_code == 200) {
               this.$toast.success(response.data.response_message)
               this.toggler = true;
+                console.log('is logged in ::::::::::::::::::', this.$auth.user.id)
+                this.$hello(this.$auth.user.id);
               this.$router.push('/backend/dashboard');
             } else {
               this.$toast.error(response.data.response_message)

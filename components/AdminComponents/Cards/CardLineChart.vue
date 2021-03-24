@@ -23,7 +23,7 @@ export default {
     },
     watch: {
       getSelected:function(){
-      console.log('comunication............', this.getSelected)
+      console.log('line chart comunication from parent to child established', this.getSelected)
       this.resetChart();
       this.trackCampaign(this.getSelected)
      }
@@ -32,13 +32,12 @@ export default {
   
   mounted () {
     console.log('getChartData:::::::::::::', this.getSelected)
-       
-  },
+  }, 
     methods:{
    sendMessageToParent(campaignStatus){
-     this.$emit('messageFromChild', campaignStatus);
+     this.$emit('line chart message FromChild', campaignStatus);
    },
-  
+   
    resetChart(){
       this.chartData.labes = []
       this.chartData.data1 = []
@@ -68,7 +67,14 @@ export default {
       labels: this.chartData.labes,
       datasets: [
         {
-          label: 'Data One',
+          label: 'Total Email',
+          backgroundColor: '#5b2ba2',
+          data: [this.chartData.data1[0]],
+          lineThickness: 5
+
+        },
+         {
+          label: 'Opened mail',
           backgroundColor: '#22c777',
           data: this.chartData.data2,
           lineThickness: 5

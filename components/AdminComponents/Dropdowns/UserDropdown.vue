@@ -62,6 +62,10 @@ export default {
       image: image,
     };
   },
+  mounted(){
+  console.log('login id :: ',this.$auth);
+  this.showNotification(this.$auth.$state.user.id);
+  },
   methods: {
     toggleDropdown: function (event) {
       event.preventDefault();
@@ -74,8 +78,14 @@ export default {
         });
       }
     },
+    showNotification(user_id){
+      console.log('user id is ::',user_id);
+    },
+    notification (user_id) {
 
+    setInterval(this.showNotification(user_id), 1000);
 
+    },
     async onLogout() {
       try {
         let response = await this.$auth.logout('local')

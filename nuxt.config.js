@@ -81,9 +81,9 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vee-validate",
-    "~/plugins/b-icon.js"
+    "~/plugins/b-icon.js",
+    "~/plugins/notify.js"
   ],
-
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -102,7 +102,7 @@ export default {
     'bootstrap-vue/nuxt',
 
   ],
-
+ 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ["vee-validate/dist/rules"],

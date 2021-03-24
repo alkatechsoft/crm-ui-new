@@ -26,8 +26,7 @@
         :search="true"
         >
         </b-form-select>
-  
-   
+
         </div>
 
       </div>
@@ -66,9 +65,9 @@
  
       <div class="card-body flex-auto px-4 lg:px-10 py-10 pt-0">
      
-           <!-- loader:{{chartData.isLoader}}
+           loader:{{chartData.isLoader}}
            render:{{chartData.isRender}}
-           seleted:{{chartData.selected}} -->
+           seleted:{{chartData.selected}}
           <div class="flex flex-wrap ">
             
             <div class="w-full xl:w-6/12 mb-12 xl:mb-0 px-4 text-center" style1="width: auto; height:40rem">
@@ -133,7 +132,7 @@ export default {
   methods:{
     childMessageReceived(campaignStatus){
     // alert(campaignStatus)
-    console.log("staus from child :", campaignStatus);
+    console.log("bar chart staus from child ::", campaignStatus);
     this.chartData.isRender = true;
     this.chartData.isLoader = false;
     },

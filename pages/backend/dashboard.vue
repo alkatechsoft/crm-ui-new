@@ -57,6 +57,8 @@
     mounted() {
         this.$nuxt.$emit('changeTitle',"Dashboard")
         this.notifyAdmin(this.flag)
+    console.log('dashboard ::::::::::::::::::', this.$auth.user.id)
+
         },
         methods:{
         notifyAdmin(flag){
