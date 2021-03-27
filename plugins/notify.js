@@ -9,7 +9,7 @@ export default ({ app }, inject) => {
       console.log('this is global data value:', i);
       console.log('user id ::');
     }
-    inject('hello', msg => alert(`Hellooooooooooooooooo  + ${msg}!`))
+    inject('hello', msg => console.log(`Hellooooooooooooooooo  + ${msg}!`))
     // inject('hello', abs())
     console.log('global function...')
   }
