@@ -72,7 +72,7 @@
         </form>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full" />
+        <hr class="my-3 md:min-w-full" />
         <!-- Heading -->
         <h6
           class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
@@ -156,7 +156,7 @@
         </ul>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full" />
+        <hr class="my-3 md:min-w-full" />
         <!-- Heading -->
         <h6
           class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
@@ -240,7 +240,7 @@
         </ul>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full" />
+        <hr class="my-3 md:min-w-full" />
         <!-- Heading -->
         <h6
           class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
@@ -300,8 +300,43 @@
 
 
         </ul>
+        <hr class="my-3 md:min-w-full" />
+
+<h6
+          class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        >
+          System Setting 
+        </h6>
+        <!-- Navigation -->
+
+        <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+          <li class="items-center">
+            <nuxt-link
+              to="/backend/setting/mail-config"
+              v-slot="{ href, route, navigate, isActive }"
+            >
+              <a
+                :href="href"
+                @click="navigate"
+                class="text-xs uppercase py-3 font-bold block"
+                :class="[
+                  isActive
+                    ? 'text-green-500 hover:text-denim-600'
+                    : 'text-gray-800 hover:text-gray-600',
+                ]"
+              >
+                <i
+                  class="fas fa-tools mr-2 text-sm"
+                  :class="[isActive ? 'opacity-75' : 'text-gray-400']"
+                ></i>
+               Email Configuration
+              </a>
+            </nuxt-link>
+          </li>
+ 
 
 
+        </ul>
       </div>
     </div>
   </nav>

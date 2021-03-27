@@ -199,10 +199,10 @@
           this.$router.push('/backend/scheduler/mail-scheduler-report');
         },
         detailedCsvReport(){
-          let csv = '\ufeff' + 'Sender Email, Recipient Email, Mail Clicked, Mail Opened\n'
+          let csv = '\ufeff' + 'Sender Email, Recipient Email,  Mail Opened, Link Clicked (Inside Email) \n'
           console.log('csv',this.csv);
           this.csv.forEach(el => {
-            var line = el['senderEmail'] + ',' + el['recipientEmail']  + ',' + el['mailClicked']  + ',' + el['mailOpened'] + '\n'
+            var line = el['senderEmail'] + ',' + el['recipientEmail']  + ',' + el['mailOpened']  + ',' + el['linkInsideMailClicked'] + '\n'
             csv += line
           })
           var blob = new Blob([ csv ], { "type" : "csv/plain" });
@@ -221,7 +221,7 @@
             this.csv=[];
             this.execution_date = date
             // this.items=response.data.response_body;
-            response.data.response_body.map((data) => this.csv.push({senderEmail: data.sender_email, recipientEmail: data.recipient_email, mailClicked: data.mail_clicked, mailOpened:data.mail_opened }));
+            response.data.response_body.map((data) => this.csv.push({senderEmail: data.sender_email, recipientEmail: data.recipient_email, linkInsideMailClicked: data.mail_clicked, mailOpened:data.mail_opened }));
             this.totalRows = this.items.length
             this.detailedCsvReport();
             console.log('response on click',response);

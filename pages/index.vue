@@ -8,7 +8,7 @@
 export default {
 
   layout: 'AuthLayouts/masterLayout',
-
+  auth:"guest"
 
 
 }
