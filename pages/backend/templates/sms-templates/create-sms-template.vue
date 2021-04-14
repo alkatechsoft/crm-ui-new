@@ -117,6 +117,14 @@
     export default {
       name: "create-sms-template",
       layout: 'AdminLayouts/masterLayout',
+        head () {
+        return {
+          title: this.app_title,
+          link: [
+            { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+          ]
+        }
+      },
       components: {
         editor: Editor,
       },
@@ -128,6 +136,8 @@
 
           TemplateCategory: [],
           selectedCategory: [],
+          app_title:this.$store.state.appinfo.appName +' | Create Sms Template',
+          app_icon:this.$store.state.appinfo.appFavicon,
         };
       },
 

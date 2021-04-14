@@ -54,6 +54,14 @@
     export default {
         name: "dashboard",
       layout: 'AdminLayouts/masterLayout',
+        head () {
+        return {
+          title: this.app_title,
+          link: [
+            { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+          ]
+        }
+      },
     mounted() {
         this.$nuxt.$emit('changeTitle',"Dashboard")
         this.notifyAdmin(this.flag)

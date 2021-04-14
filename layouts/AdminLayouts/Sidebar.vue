@@ -18,7 +18,8 @@
 
         to="/backend/dashboard"
       >
-        <img class="md:w-36 w-24 " src="~/assets/images/alkatech-logo.png" :alt="$config.appName">
+        <!-- <img class="md:w-36 w-24 " src="~/assets/images/alkatech-logo.png" :alt="$config.appName"> -->
+        <img class="md:w-36 w-24 " :src="$store.state.appinfo.appLogo" :alt="$store.state.appinfo.appName">
 
 
       </nuxt-link>
@@ -333,7 +334,29 @@
               </a>
             </nuxt-link>
           </li>
- 
+        <li class="items-center">
+            <nuxt-link
+              to="/backend/setting/facebook-feed"
+              v-slot="{ href, route, navigate, isActive }"
+            >
+              <a
+                :href="href"
+                @click="navigate"
+                class="text-xs uppercase py-3 font-bold block"
+                :class="[
+                  isActive
+                    ? 'text-green-500 hover:text-denim-600'
+                    : 'text-gray-800 hover:text-gray-600',
+                ]"
+              >
+                <i
+                  class="fas fa-tools mr-2 text-sm"
+                  :class="[isActive ? 'opacity-75' : 'text-gray-400']"
+                ></i>
+               Facebook Feed
+              </a>
+            </nuxt-link>
+          </li>
 
 
         </ul>

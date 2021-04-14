@@ -214,7 +214,14 @@
   export default {
     name: "upload-clients",
     layout: 'AdminLayouts/masterLayout',
-
+  head () {
+        return {
+          title: this.app_title,
+          link: [
+            { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+          ]
+        }
+      },
 
     data() {
 
@@ -237,6 +244,8 @@
         Passed_Records: null,
         Failed_Records: null,
         category: [{value: null, label: 'Please select an option'}],
+        app_title:this.$store.state.appinfo.appName +' | Upload Subscriber',
+        app_icon:this.$store.state.appinfo.appFavicon,
       }
     },
     mounted() {

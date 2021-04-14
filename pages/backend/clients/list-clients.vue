@@ -153,7 +153,14 @@
     name: "list-clients",
     components: {ListScubscriber},
     layout: 'AdminLayouts/masterLayout',
-
+  head () {
+        return {
+          title: this.app_title,
+          link: [
+            { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+          ]
+        }
+      },
     data() {
 
       return {
@@ -179,8 +186,9 @@
         sortDirection: 'asc',
         filter: null,
         filterOn: [],
-
-      }
+        app_title:this.$store.state.appinfo.appName +' | List Subscriber',
+        app_icon:this.$store.state.appinfo.appFavicon,
+      } 
     },
     computed: {
       sortOptions() {

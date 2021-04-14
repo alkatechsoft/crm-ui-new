@@ -34,11 +34,20 @@
     export default {
         name: "list-templates",
         layout: 'AdminLayouts/masterLayout',
-
+      head () {
+            return {
+              title: this.app_title,
+              link: [
+                { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+              ]
+            }
+          },
       data(){
           return{
             updatetemplateId:null,
             isListTemplate:false,
+            app_title:this.$store.state.appinfo.appName +' | List Template',
+            app_icon:this.$store.state.appinfo.appFavicon,
           }
 
       },

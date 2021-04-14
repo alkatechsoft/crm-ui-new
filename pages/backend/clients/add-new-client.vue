@@ -20,9 +20,24 @@
     export default {
         name: "add-new-client",
       layout: 'AdminLayouts/masterLayout',
-
+      head () {
+            return {
+              title: this.app_title,
+              link: [
+                { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+              ]
+            }
+          },
+          data() {
+        return {
+          app_title:this.$store.state.appinfo.appName +' | Add New Subscriber',
+          app_icon:this.$store.state.appinfo.appFavicon,
+          }
+        },
       mounted() {
         this.$nuxt.$emit('changeTitle', "Add new Subscriber")
+
+        
       }
     }
 </script>

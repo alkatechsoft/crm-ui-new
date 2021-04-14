@@ -169,10 +169,14 @@
     export default {
         name: "mail-scheduler-report",
         layout: 'AdminLayouts/masterLayout',
-
-
-
-
+  head () {
+        return {
+          title: this.app_title,
+          link: [
+            { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+          ]
+        }
+      },
       data() {
 
         return {
@@ -203,7 +207,8 @@
             title: '',
             modelData: ''
           },
-
+          app_title:this.$store.state.appinfo.appName +' | Mail Scheluler Report',
+          app_icon:this.$store.state.appinfo.appFavicon,
 
         }
       },

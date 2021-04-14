@@ -388,6 +388,14 @@
     components: {ListScubscriber},
     name: "mail-scheduler",
     layout: 'AdminLayouts/masterLayout',
+    head () {
+          return {
+            title: this.app_title,
+            link: [
+              { rel: 'icon', type: 'image/x-icon', href: this.app_icon }
+            ]
+          }
+        },
 
     data() {
 
@@ -471,7 +479,9 @@
           { text: 'Thur', value: 'thu' },
           { text: 'Fri', value: 'fri' },
           { text: 'Sat', value: 'sat' }
-        ]
+        ],
+        app_title:this.$store.state.appinfo.appName +' | Schedule Mail Campaign',
+        app_icon:this.$store.state.appinfo.appFavicon,
       }
     },
     computed: {

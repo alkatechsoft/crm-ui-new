@@ -37,7 +37,7 @@ export default {
 
   // Global Route Middleware:
   router: {
-    middleware: ['auth']
+    middleware: ['auth','application']
   },
 
   //Global Auth

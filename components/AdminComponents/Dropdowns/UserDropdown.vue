@@ -26,12 +26,29 @@
         block: dropdownPopoverShow,
       }"
     >
+
+ 
+
+ <nuxt-link
+              to="/backend/profile/user-profile"
+              v-slot="{ href, route, navigate, isActive }"
+            >
+
       <a
         href="javascript:void(0);"
+        @click="navigate"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
       >
         Profile
       </a>
+ </nuxt-link>
+
+
+
+
+
+
+
       <a
         href="javascript:void(0);"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent text-gray-800"
@@ -63,7 +80,6 @@ export default {
     };
   },
   mounted(){
-  console.log('login id :: ',this.$auth);
   this.showNotification(this.$auth.$state.user.id);
   },
   methods: {
@@ -79,7 +95,6 @@ export default {
       }
     },
     showNotification(user_id){
-      console.log('user id is ::',user_id);
     },
     notification (user_id) {
 
@@ -89,7 +104,6 @@ export default {
     async onLogout() {
       try {
         let response = await this.$auth.logout('local')
-        console.log(response)
         this.$toast.success('Logout successful.')
         this.$router.push('/authentication/login');
       } catch (err) {
